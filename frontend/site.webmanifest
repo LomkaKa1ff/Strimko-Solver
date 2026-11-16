@@ -1,0 +1,26 @@
+{
+  "id": "./",
+  "name": "Strimko Solver",
+  "short_name": "Strimko",
+  "description": "Solve Strimko puzzles from screenshots or enter a grid manually.",
+  "lang": "en",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F7F6F3",
+  "theme_color": "#F7F6F3",
+  "icons": [
+    {
+      "src": "favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

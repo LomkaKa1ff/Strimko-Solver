@@ -1,0 +1,522 @@
+:root {
+    --primary-color: #000000;
+    --primary-hover: #3e3e3e;
+    --bg-color: #F7F6F3;
+    --surface-color: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --radius: 16px;
+    --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header & Typography */
+header {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo img {
+    height: 40px;
+    width: 249px;
+    object-fit: contain;
+    image-rendering: auto;
+    vertical-align: middle;
+}
+
+.wrapper {
+    flex: 1;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Solve Methods Section */
+.solveMethod {
+    background: var(--surface-color);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    margin: 0 auto 3rem;
+    max-width: 800px;
+}
+
+#selectMethodText {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.method-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 600px) {
+    .method-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+.method-card {
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius);
+    padding: 2rem 1.5rem;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.method-card:hover {
+    border-color: var(--primary-color);
+    background-color: #fbfbfe;
+}
+
+.screenshot-icon, .manual-icon {
+    width: 80px;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+}
+
+.status-badge {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.status-badge.error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.status-badge.success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+/* Buttons */
+button {
+    font-family: 'DM Sans', sans-serif;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+/* Info Section */
+.infoTextBlock {
+    background: var(--surface-color);
+    border-radius: var(--radius);
+    padding: 3rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    .infoTextBlock {
+        padding: 1.5rem;
+    }
+}
+
+.info-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.info-item ul {
+    list-style-position: inside;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.info-item p {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.divider-line {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 2rem 0;
+}
+
+.tip-box {
+    background: #fffbeb;
+    border-left: 4px solid #f59e0b;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    margin-top: 2rem;
+    color: #92400e;
+    font-weight: 500;
+}
+
+.tip-box a {
+    color: #d97706;
+    text-decoration: underline;
+}
+
+/* Canvas Area Restyling */
+#canvasContainer {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    margin: 0 auto;
+    overflow-x: auto;
+    max-width: fit-content;
+}
+
+canvas {
+    border-radius: 8px;
+}
+
+/* --- КОНТЕЙНЕР ДЛЯ КНОПОК СЕТКИ --- */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+/* --- ВОССТАНОВЛЕННЫЕ СТИЛИ ДЛЯ КНОПОК SOLVE / RESET / RESIZE --- */
+.buttons button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px; /* Скруглили под стиль остальных кнопок */
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    font-family: 'DM Sans', sans-serif;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Легкая тень */
+}
+
+.btn-return {
+    display: block;
+    margin: 30px auto 40px auto; /* auto по бокам центрирует кнопку */
+    background-color: #1a1a1a; /* Темный цвет в стиле сайта */
+    color: #ffffff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.btn-return:hover {
+    background-color: var(--primary-hover);
+}
+
+.buttons button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.buttons button:active {
+    transform: scale(0.96); /* Приятный эффект вдавливания при клике */
+}
+
+#fillBtn {
+    background: #10b981; /* Мягкий изумрудно-зеленый */
+    color: white;
+}
+
+#fillBtn:hover {
+    background: #059669;
+}
+
+#resetBtn {
+    background: #ef4444; /* Мягкий кораллово-красный */
+    color: white;
+}
+
+#resetBtn:hover {
+    background: #dc2626;
+}
+
+/* --- СТИЛЬ КНОПКИ RESIZE --- */
+#changeSizeBtn {
+    background-color: #f59e0b; /* Тот самый мягкий янтарный цвет */
+    color: white;
+    border-radius: 8px;        /* Скругление как у остальных */
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+#changeSizeBtn:hover {
+    background-color: #d97706; /* Чуть темнее при наведении */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#changeSizeBtn:active {
+    transform: scale(0.96);    /* Эффект нажатия */
+}
+
+/* Footer */
+footer {
+    background: var(--surface-color);
+    color: var(--text-muted);
+    padding: 2rem 1rem;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* УВЕДОМЛЕНИЯ */
+.message-container, .message-container-green {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none;
+}
+
+.message-container.show, .message-container-green.show {
+    display: block;
+}
+
+.message-container {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.message-container-green {
+    background-color: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+/* --- КРАСИВОЕ ОКНО ВВОДА (МОДАЛКА) --- */
+.custom-prompt-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Полупрозрачный темный фон */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.custom-prompt-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.custom-prompt-box {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    text-align: center;
+    width: 90%;
+    max-width: 320px;
+    transform: translateY(20px);
+    transition: transform 0.2s ease;
+}
+
+.custom-prompt-overlay.show .custom-prompt-box {
+    transform: translateY(0);
+}
+
+.custom-prompt-box h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #0f172a;
+}
+
+#customPromptInput, #resizePromptInput {
+    width: 100%;
+    padding: 12px;
+    font-size: 24px;
+    text-align: center;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-family: 'DM Mono', monospace;
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+#customPromptInput:focus {
+    border-color: #10b981;
+}
+
+#resizePromptInput:focus {
+    border-color: #f59e0b;
+}
+
+.custom-prompt-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.custom-prompt-buttons button {
+    flex: 1;
+    padding: 12px 10px;
+    font-size: 15px;
+    margin: 0;
+    border: none;             /* Убираем стандартную жесткую рамку */
+    border-radius: 8px;       /* Тот самый небольшой border-radius */
+    cursor: pointer;          /* Курсор-пальчик при наведении */
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.custom-prompt-buttons button:active {
+    transform: scale(0.96);   /* Добавляем эффект вдавливания при клике */
+}
+
+#btnPromptSave {
+    background: #10b981;
+    color: white;
+}
+
+#btnPromptSave:hover {
+    background: #059669; }
+
+#btnPromptClear {
+    background: #ef4444; color: white; }
+
+#btnPromptClear:hover {
+    background: #dc2626; }
+
+#btnPromptCancel {
+    background: #f3f4f6; color: #64748b; }
+
+#btnPromptCancel:hover {
+    background: #e5e7eb; }
+
+#btnResizeSave { background: #f59e0b; color: white; } /* Оранжевая кнопка для Resize */
+#btnResizeSave:hover { background: #d97706; }
+
+#btnResizeCancel { background: #f3f4f6; color: #64748b; }
+#btnResizeCancel:hover { background: #e5e7eb; }
+/* Keep Back on a separate row, sharing the Reset button's center line. */
+.solver-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    justify-content: center;
+    align-items: center;
+    column-gap: 1rem;
+    row-gap: 20px;
+}
+
+.solver-buttons .btn-return {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: center;
+    margin: 5px;
+    padding: 12px 30px;
+    font-size: 16px;
+}

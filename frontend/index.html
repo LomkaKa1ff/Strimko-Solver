@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Strimko Solver — Free Online Puzzle Solver</title>
+    <meta name="description" content="Solve Strimko puzzles online for free. Upload a screenshot or enter numbers and connect streams manually, then solve the grid in your browser.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#F7F6F3">
+    <link rel="canonical" href="https://lomkaka1ff.github.io/Strimko-Solver/">
+    <link rel="sitemap" type="application/xml" href="sitemap.xml">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Strimko Solver">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Strimko Solver — Free Online Puzzle Solver">
+    <meta property="og:description" content="Solve Strimko puzzles online for free. Upload a screenshot or enter numbers and connect streams manually, then solve the grid in your browser.">
+    <meta property="og:url" content="https://lomkaka1ff.github.io/Strimko-Solver/">
+    <meta property="og:image" content="https://lomkaka1ff.github.io/Strimko-Solver/Solver_logo_connected_3x.png">
+    <meta property="og:image:width" content="747">
+    <meta property="og:image:height" content="120">
+    <meta property="og:image:alt" content="Strimko Solver logo with six connected colored circles spelling SOLVER">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Strimko Solver — Free Online Puzzle Solver">
+    <meta name="twitter:description" content="Solve Strimko puzzles online for free. Upload a screenshot or enter numbers and connect streams manually, then solve the grid in your browser.">
+    <meta name="twitter:image" content="https://lomkaka1ff.github.io/Strimko-Solver/Solver_logo_connected_3x.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Strimko Solver",
+  "url": "https://lomkaka1ff.github.io/Strimko-Solver/",
+  "description": "Solve Strimko puzzles online for free. Upload a screenshot or enter numbers and connect streams manually, then solve the grid in your browser.",
+  "inLanguage": "en",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript and a modern web browser",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "sameAs": "https://github.com/LomkaKa1ff/Strimko-Solver",
+  "featureList": [
+    "Manual Strimko grid input",
+    "Screenshot digit recognition",
+    "Image-based stream detection",
+    "Strimko puzzle solving"
+  ]
+}
+    </script>
+    <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+    <link rel="icon" type="image/svg+xml" sizes="any" href="favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="application-name" content="Strimko Solver">
+    <meta name="apple-mobile-web-app-title" content="Strimko">
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="Solver_logo_connected_1x.png" srcset="Solver_logo_connected_2x.png 2x, Solver_logo_connected_3x.png 3x" width="249" height="40" alt="Strimko Solver Logo">
+            </a>
+        </div>
+    </nav>
+</header>
+
+<main class="wrapper">
+    <section class="hero">
+        <h1>Strimko Solver</h1>
+        <p class="subtitle">Fast and accurate logic puzzle solutions.</p>
+    </section>
+
+    <div class="container-main">
+        <div class="solveMethod">
+            <h2>Choose Solving Method</h2>
+            <p id="selectMethodText">Upload a picture or fill the grid manually.</p>
+
+            <div class="method-cards">
+                <div class="method-card screenshotOptionButton">
+                    <img src="image-icon.jpg" alt="Upload" class="screenshot-icon">
+                    <h3>Screenshot Solver</h3>
+                    <p class="status-badge error">Beta</p>
+                    <input type="file" id="fileInput" accept="image/*" style="display:none">
+                    <button class="btn-primary btn-upload" onclick="document.getElementById('fileInput').click()">Select Image</button>
+                </div>
+
+                <div class="method-card manual-fill">
+                    <img src="manual.png" alt="Enter a Strimko puzzle manually" class="manual-icon">
+                    <h3>Manual Solver</h3>
+                    <p class="status-badge success">Available</p>
+                    <button class="btn-primary btn-fill">Fill Manually</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="manualFillContainer"></div>
+    </div>
+
+    <section class="info-section">
+        <div class="infoTextBlock">
+            <h2>How to Use?</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>Manually</h3>
+                    <ul>
+                        <li>Click on a circle to enter a number.</li>
+                        <li><strong>Shift + Click</strong> to connect chains.</li>
+                        <li>Click <strong>Solve</strong> to finish.</li>
+                    </ul>
+                </div>
+                <div class="info-item">
+                    <h3>By Screenshot</h3>
+                    <p>Simply upload your image, and the solver will identify the numbers and streams automatically.</p>
+                </div>
+            </div>
+
+            <hr class="divider-line">
+
+            <h2>What is Strimko?</h2>
+            <p>Strimko is a logic number puzzle based on rows, columns, and streams. Each must contain unique numbers from 1 to N.</p>
+
+            <div class="tip-box">
+                ☕️ Support the project: <a href="https://buymeacoffee.com/strimkosolver" target="_blank">buy me a coffee!</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <p>Contact: <a href="https://github.com/LomkaKa1ff/Strimko-Solver/issues">Report a bug or suggest an improvement on GitHub</a></p>
+        <p>© 2026 StrimkoSolver. All rights reserved.</p>
+        <a href="Privacy-policy.html" class="privacy-link">Privacy Policy</a>
+    </div>
+</footer>
+
+<script src="index.js"></script>
+</body>
+</html>
