@@ -16,7 +16,18 @@ if (!MODEL.endsWith(':free')) {
     throw new Error('OPENROUTER_VISION_MODEL must end with :free to use a free endpoint.');
 }
 const app = express();
-app.use(cors());
+const allowedOrigins = (process.env.CORS_ORIGINS || 'https://lomkaka1ff.github.io')
+    .split(',').map(origin => origin.trim()).filter(Boolean);
+app.use((req, res, next) => {
+    const origin = req.get('Origin');
+    const localDevelopment = origin && /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin);
+    if (origin && !allowedOrigins.includes(origin) && !localDevelopment) {
+        return res.status(403).json({ error: 'This website is not allowed to use the API.' });
+    }
+    next();
+});
+app.use(cors({ origin: true, methods: ['GET', 'POST', 'OPTIONS'] }));
+app.get('/health', (req, res) => res.json({ status: 'ok' }));
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 4 * 1024 * 1024 } });
 
 const systemPrompt = `Transcribe only the printed numbers in the Strimko puzzle. Do not solve it.
@@ -132,6 +143,7 @@ app.use((error, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Backend server is running on http://localhost:${PORT} (OpenRouter: ${MODEL})`);
+const HOST = process.env.HOST || '127.0.0.1';
+app.listen(PORT, HOST, () => {
+    console.log(`Backend server is running on http://${HOST}:${PORT} (OpenRouter: ${MODEL})`);
 });

@@ -98,6 +98,14 @@ async function readBoardEdges(file, n) {
     } finally { bitmap.close(); }
 }
 
+function getAnalysisEndpoint() {
+    const configured = window.STRIMKO_CONFIG?.apiBaseUrl;
+    const local = ['localhost', '127.0.0.1', '[::1]', ''].includes(window.location.hostname);
+    const base = configured || (local ? 'http://localhost:3000' : '');
+    if (!base) throw new Error('Screenshot recognition is not available yet. Please use manual input.');
+    return base.replace(/\/$/, '') + '/api/analyze-board';
+}
+
 let canvas, ctx, canvasContainer;
 let size = 6;
 let spacing, radius;
@@ -516,7 +524,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const formData = new FormData();
                 if (detectedLayout) formData.append('gridSize', String(detectedLayout.size));
                 formData.append('image', file);
-                const response = await fetch('http://localhost:3000/api/analyze-board', { method: 'POST', body: formData });
+                const response = await fetch(getAnalysisEndpoint(), { method: 'POST', body: formData });
                 const data = await response.json().catch(() => null);
                 if (!response.ok) {
                     throw new Error(data?.error || ('Server error (HTTP ' + response.status + ')'));
